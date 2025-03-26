@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-clinicwebsite-dev-5aa19-authRole",
+      "UnauthRoleArn": "arn:aws:iam::311141554067:role/amplify-clinicwebsite-dev-5aa19-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::311141554067:role/amplify-clinicwebsite-dev-5aa19-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-clinicwebsite-dev-5aa19-deployment",
+      "UnauthRoleName": "amplify-clinicwebsite-dev-5aa19-unauthRole",
+      "StackName": "amplify-clinicwebsite-dev-5aa19",
+      "StackId": "arn:aws:cloudformation:us-east-2:311141554067:stack/amplify-clinicwebsite-dev-5aa19/62bde990-e6bf-11ef-9fcd-0ae3e1333c13",
+      "AmplifyAppId": "d2yynedu22x4rs"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2yynedu22x4rs",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}

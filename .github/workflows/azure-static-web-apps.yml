@@ -1,0 +1,70 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+          
+      # Debug step to see directory structure
+      - name: List directory structure
+        run: |
+          ls -la
+          
+      # Modified prepare files step
+      - name: Prepare files for deployment
+        run: |
+          # Create deployment directory
+          mkdir -p deploy
+          
+          # Copy all HTML files from pages directory
+          cp -r pages/* deploy/
+          
+          # Copy asset directories
+          cp -r css deploy/
+          cp -r js deploy/
+          cp -r assets deploy/
+          
+          # Copy index.html to root of deploy directory
+          cp index.html deploy/
+          
+          # Debug: List the deploy directory
+          echo "Deploy directory contents:"
+          ls -la deploy/
+          
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "deploy" # Changed to point to our deploy directory
+          skip_app_build: true
+          output_location: ""
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "close" 
