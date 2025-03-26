@@ -360,6 +360,7 @@
             z-index: 100;
         }
 
+        /* Updated Mobile styles */
         @media (max-width: 992px) {
             .main-nav {
                 gap: 1.5rem;
@@ -373,8 +374,13 @@
         @media (max-width: 768px) {
             .site-header {
                 padding: 1rem;
+                justify-content: space-between;
             }
-
+            
+            .logo-container {
+                padding-left: 0;
+            }
+            
             .main-nav {
                 display: none;
                 position: fixed;
@@ -382,22 +388,47 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(43, 97, 77, 0.95);
+                background-color: rgba(26, 26, 26, 0.98);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
                 z-index: 90;
+                padding: 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .main-nav.active {
+                display: flex;
+                animation: fadeIn 0.3s forwards;
             }
             
             .nav-item {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
             }
             
             .mobile-menu-btn {
                 display: block;
+                margin-right: 10px;
             }
-
+            
+            .social-icons {
+                position: fixed;
+                bottom: 40px;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                z-index: 91;
+                display: none;
+            }
+            
+            .main-nav.active + .social-icons {
+                display: flex;
+            }
+            
             .hero {
                 padding-left: 0;
                 background-position: center;
@@ -410,6 +441,8 @@
                 text-align: center;
                 margin: 0 auto;
                 z-index: 2;
+                width: 100%;
+                max-width: 450px;
             }
             
             .hero-content h1 {
@@ -419,33 +452,64 @@
             
             .hero-content p {
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+                font-size: 1.2rem;
+                line-height: 1.5;
             }
             
-            .social-icons {
-                gap: 1rem;
+            .btn-appointment {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            .feature-card {
+                margin-bottom: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .feature-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-description {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero-content h1 {
                 font-size: 2rem;
+                margin-bottom: 1rem;
             }
             
             .hero-content p {
                 font-size: 1rem;
+                margin-bottom: 2rem;
             }
             
             .btn-appointment {
                 padding: 0.75rem 1.5rem;
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
-            .social-icons {
-                gap: 0.8rem;
+            .section-title {
+                font-size: 1.75rem;
             }
             
-            .social-icon {
-                font-size: 1rem;
+            .testimonial-item {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+            
+            .footer {
+                padding: 3rem 1.5rem 2rem;
             }
         }
 
@@ -968,8 +1032,8 @@
             <img src="originsbranding/logos/cc_text_white.png" alt="Cornerstone Chiropractic">
         </div>
         <nav class="main-nav">
-            <a href="#" class="nav-item">HOME</a>
-            <a href="#" class="nav-item">SERVICES</a>
+            <a href="index.html" class="nav-item active">HOME</a>
+            <a href="services.html" class="nav-item">SERVICES</a>
             <a href="#" class="nav-item">OUR TEAM</a>
             <a href="#" class="nav-item">OUR STORY</a>
         </nav>
@@ -1033,7 +1097,7 @@
             <div class="section-label">ABOUT US</div>
             <h2 class="section-title">Dedicated to your health and wellness.</h2>
             <p class="about-text">With years of experience and a commitment to excellence, we provide comprehensive chiropractic care that focuses on your individual needs.</p>
-            <a href="#" class="btn-learn-more">LEARN MORE</a>
+            <a href="services.html" class="btn-learn-more">LEARN MORE</a>
         </div>
     </section>
 
@@ -1131,9 +1195,9 @@
             <div class="footer-column">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="#">Our Team</a></li>
                     <li><a href="#">Resources</a></li>
                     <li><a href="#">Contact</a></li>
@@ -1143,12 +1207,12 @@
             <div class="footer-column">
                 <h3 class="footer-heading">Services</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Chiropractic Adjustments</a></li>
-                    <li><a href="#">Corrective Exercises</a></li>
-                    <li><a href="#">Lifestyle Advice</a></li>
-                    <li><a href="#">Spinal & Postural Screenings</a></li>
-                    <li><a href="#">Pain Management</a></li>
-                    <li><a href="#">Sport Injuries</a></li>
+                    <li><a href="services.html#services">Chiropractic Adjustments</a></li>
+                    <li><a href="services.html#services">Corrective Exercises</a></li>
+                    <li><a href="services.html#services">Lifestyle Advice</a></li>
+                    <li><a href="services.html#services">Spinal & Postural Screenings</a></li>
+                    <li><a href="services.html#services">Pain Management</a></li>
+                    <li><a href="services.html#services">Sport Injuries</a></li>
                 </ul>
             </div>
 
@@ -1214,14 +1278,41 @@
             const nav = document.querySelector('.main-nav');
             const menuBtn = document.querySelector('.mobile-menu-btn i');
             
-            if (nav.style.display === 'flex') {
-                nav.style.display = 'none';
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
                 menuBtn.classList.remove('fa-times');
                 menuBtn.classList.add('fa-bars');
+                document.body.style.overflow = '';
             } else {
-                nav.style.display = 'flex';
+                nav.classList.add('active');
                 menuBtn.classList.remove('fa-bars');
                 menuBtn.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('.main-nav');
+                const menuBtn = document.querySelector('.mobile-menu-btn i');
+                
+                if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    menuBtn.classList.remove('fa-times');
+                    menuBtn.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
 
@@ -1241,16 +1332,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.site-header');
-            if (window.pageYOffset > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
         });
         
         // Reveal animations on scroll
