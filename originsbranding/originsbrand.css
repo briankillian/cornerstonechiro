@@ -1,0 +1,739 @@
+/*==============================================
+  Origins Wellness Center - Website Structure
+  
+  A comprehensive structural stylesheet implementing
+  brand guidelines and design system.
+  
+  Contents:
+  1. Color System
+  2. Typography System
+  3. Page Layout & Grid
+  4. Header & Navigation
+  5. Hero Sections
+  6. Content Sections
+  7. Cards & Components
+  8. Forms & Interactive Elements
+  9. Footer
+  10. Responsive Design
+  11. Animations & Transitions
+  12. Utility Classes
+===============================================*/
+
+/*==============================================
+  1. Color System
+  Usage: Brand color implementation and combinations
+===============================================*/
+
+/* Color Variables
+   Usage: Core color definitions */
+   :root {
+    /* Primary Colors */
+    --brand-green: #2B614D;  /* Logo, primary buttons, key design elements */
+    --rich-black: #1A1A1A;   /* Primary text, headers, UI elements */
+    
+    /* Secondary Colors */
+    --warm-stone: #D2C4B7;   /* Backgrounds, cards, dividers */
+    --light-sage: #E8EFEB;   /* Background tints, hover states */
+    
+    /* Accent Colors */
+    --deep-copper: #CB8E6C;  /* Calls-to-action, highlights */
+    --muted-navy: #34495E;   /* Secondary buttons, links */
+    
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
+  }
+  
+  /* Color Implementation Classes
+     Usage: Standard color applications */
+  
+  /* Background Colors */
+  .bg-primary {
+    background-color: var(--brand-green);
+    color: var(--white);  /* Ensures WCAG compliance */
+  }
+  
+  .bg-secondary {
+    background-color: var(--light-sage);
+  }
+  
+  .bg-accent {
+    background-color: var(--deep-copper);
+    color: var(--white);
+  }
+  
+  .bg-stone {
+    background-color: var(--warm-stone);
+  }
+  
+  /* Text Colors */
+  .text-primary {
+    color: var(--brand-green);
+  }
+  
+  .text-body {
+    color: var(--rich-black);
+  }
+  
+  .text-accent {
+    color: var(--deep-copper);
+  }
+  
+  .text-light {
+    color: var(--white);
+  }
+  
+  /* Interactive Color States
+     Usage: Hover and active states */
+  .hover-primary:hover {
+    background-color: color-mix(in srgb, var(--brand-green) 90%, black);
+  }
+  
+  .hover-secondary:hover {
+    background-color: color-mix(in srgb, var(--light-sage) 90%, white);
+  }
+  
+  /* Color Combinations
+     Usage: Pre-defined color pairings */
+  .primary-combo {
+    background-color: var(--brand-green);
+    color: var(--white);
+    border: 1px solid transparent;
+  }
+  
+  .secondary-combo {
+    background-color: var(--light-sage);
+    color: var(--brand-green);
+    border: 1px solid var(--brand-green);
+  }
+  
+  .accent-combo {
+    background-color: var(--deep-copper);
+    color: var(--white);
+    border: 1px solid transparent;
+  }
+  
+  /* Gradient Backgrounds
+     Usage: Section backgrounds, hero areas */
+  .gradient-primary {
+    background: linear-gradient(
+      to right bottom,
+      var(--brand-green),
+      color-mix(in srgb, var(--brand-green) 80%, black)
+    );
+    color: var(--white);
+  }
+  
+  .gradient-light {
+    background: linear-gradient(
+      to right bottom,
+      var(--light-sage),
+      var(--warm-stone)
+    );
+  }
+  
+  /*==============================================
+    2. Typography System
+    Usage: Font implementation and text styles
+  ===============================================*/
+  
+  /* Font Face Declarations */
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroSans';
+    src: url('../assets/fonts/ChiroSans/ChiroSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroText';
+    src: url('../assets/fonts/ChiroText/ChiroText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'ChiroText';
+    src: url('../assets/fonts/ChiroText/ChiroText-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  /* Typography Variables */
+  :root {
+    --display-font: 'ChiroSans', sans-serif;
+    --body-font: 'ChiroText', serif;
+    
+    /* Font Sizes */
+    --text-xs: 0.75rem;    /* 12px */
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 1.875rem;  /* 30px */
+    --text-4xl: 2.25rem;   /* 36px */
+    --text-5xl: 3rem;      /* 48px */
+    
+    /* Line Heights */
+    --leading-none: 1;
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+    --leading-loose: 2;
+  }
+  
+  /* Heading Styles
+     Usage: Page titles and section headers */
+  .heading-1 {
+    font-family: var(--display-font);
+    font-weight: 600;
+    font-size: var(--text-5xl);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heading-2 {
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: var(--text-4xl);
+    line-height: var(--leading-snug);
+    letter-spacing: -0.3px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .heading-3 {
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: var(--text-2xl);
+    line-height: var(--leading-normal);
+    letter-spacing: -0.2px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Body Text Styles
+     Usage: Main content and paragraphs */
+  .body-large {
+    font-family: var(--body-font);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    margin-bottom: 1.5rem;
+  }
+  
+  .body-default {
+    font-family: var(--body-font);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    margin-bottom: 1rem;
+  }
+  
+  .body-small {
+    font-family: var(--body-font);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+  
+  /* Special Text Styles
+     Usage: Quotes, callouts, special content */
+  .quote {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: var(--text-2xl);
+    line-height: var(--leading-relaxed);
+    margin: 2rem 0;
+  }
+  
+  .callout {
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: var(--text-xl);
+    line-height: var(--leading-normal);
+    color: var(--brand-green);
+  }
+  
+  /* Interactive Text
+     Usage: Buttons, links, navigation */
+  .button-text {
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: var(--text-base);
+    letter-spacing: 0.2px;
+  }
+  
+  .nav-text {
+    font-family: var(--display-font);
+    font-weight: 400;
+    font-size: var(--text-base);
+    letter-spacing: 0.2px;
+  }
+  
+  /* Font Weight Utilities */
+  .font-light { font-weight: 300; }
+  .font-regular { font-weight: 400; }
+  .font-medium { font-weight: 500; }
+  .font-semibold { font-weight: 600; }
+  .font-bold { font-weight: 700; }
+  
+  /* Text Transform Utilities */
+  .uppercase { text-transform: uppercase; }
+  .lowercase { text-transform: lowercase; }
+  .capitalize { text-transform: capitalize; }
+  
+  /*==============================================
+    3. Page Layout & Grid
+    Usage: Core layout structure and spacing
+  ===============================================*/
+  
+  /* Container
+     Maintains consistent content width and padding */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Grid System
+     12-column flexbox grid with gutters */
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem;  /* Compensate for column padding */
+  }
+  
+  .col {
+    flex: 1;
+    padding: 1rem;
+  }
+  
+  /* Specific column widths */
+  .col-4 { flex: 0 0 33.333%; }
+  .col-6 { flex: 0 0 50%; }
+  .col-8 { flex: 0 0 66.666%; }
+  .col-12 { flex: 0 0 100%; }
+  
+  /* Section spacing
+     Consistent vertical rhythm */
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-sm {
+    padding: 2rem 0;
+  }
+  
+  .section-lg {
+    padding: 6rem 0;
+  }
+  
+  /*==============================================
+    2. Header & Navigation
+    Usage: Site header and main navigation
+  ===============================================*/
+  
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Main Navigation */
+  .main-nav {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-item {
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--rich-black);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  
+  /* Underline animation for nav items */
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--brand-green);
+    transition: width 0.2s ease;
+  }
+  
+  .nav-item:hover::after {
+    width: 100%;
+  }
+  
+  /*==============================================
+    3. Hero Sections
+    Usage: Page hero areas and feature sections
+  ===============================================*/
+  
+  .hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    background-color: var(--light-sage);
+    overflow: hidden;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-family: var(--display-font);
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--rich-black);
+  }
+  
+  .hero-subtitle {
+    font-family: var(--body-font);
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--rich-black);
+  }
+  
+  /*==============================================
+    4. Content Sections
+    Usage: Main content areas and features
+  ===============================================*/
+  
+  .content-section {
+    padding: 4rem 0;
+  }
+  
+  /* Feature blocks */
+  .feature-block {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .feature-content {
+    flex: 1;
+  }
+  
+  .feature-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Text content */
+  .rich-text {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--rich-black);
+  }
+  
+  .rich-text p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .rich-text h2 {
+    font-family: var(--display-font);
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+  }
+  
+  /*==============================================
+    5. Cards & Components
+    Usage: Content cards and reusable components
+  ===============================================*/
+  
+  .card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Service Cards */
+  .service-card {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .service-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    color: var(--brand-green);
+  }
+  
+  .service-title {
+    font-family: var(--display-font);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /*==============================================
+    6. Forms & Interactive Elements
+    Usage: Forms, buttons, and interactive components
+  ===============================================*/
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    display: block;
+    font-family: var(--display-font);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--rich-black);
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    border: 1px solid var(--warm-stone);
+    border-radius: 4px;
+    background-color: var(--white);
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 2px rgba(43, 97, 77, 0.1);
+  }
+  
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--display-font);
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+  
+  /*==============================================
+    7. Footer
+    Usage: Site footer and bottom navigation
+  ===============================================*/
+  
+  .site-footer {
+    background-color: var(--rich-black);
+    color: var(--white);
+    padding: 4rem 0 2rem;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer-title {
+    font-family: var(--display-font);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+  }
+  
+  .footer-nav {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-link {
+    color: var(--warm-stone);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-link:hover {
+    color: var(--white);
+  }
+  
+  /*==============================================
+    8. Responsive Design
+    Usage: Responsive breakpoints and adjustments
+  ===============================================*/
+  
+  /* Tablet (1024px and below) */
+  @media screen and (max-width: 1024px) {
+    .container {
+      padding: 0 1.5rem;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+    }
+    
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Mobile (768px and below) */
+  @media screen and (max-width: 768px) {
+    .col-4,
+    .col-6,
+    .col-8 {
+      flex: 0 0 100%;
+    }
+    
+    .feature-block {
+      flex-direction: column;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .section {
+      padding: 3rem 0;
+    }
+  }
+  
+  /* Small Mobile (480px and below) */
+  @media screen and (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  /*==============================================
+    9. Animations & Transitions
+    Usage: Motion and interaction effects
+  ===============================================*/
+  
+  /* Fade In animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /*==============================================
+    10. Utility Classes
+    Usage: Helper classes for common adjustments
+  ===============================================*/
+  
+  /* Spacing */
+  .mt-1 { margin-top: 0.5rem; }
+  .mt-2 { margin-top: 1rem; }
+  .mt-4 { margin-top: 2rem; }
+  .mt-8 { margin-top: 4rem; }
+  
+  .mb-1 { margin-bottom: 0.5rem; }
+  .mb-2 { margin-bottom: 1rem; }
+  .mb-4 { margin-bottom: 2rem; }
+  .mb-8 { margin-bottom: 4rem; }
+  
+  /* Text alignment */
+  .text-center { text-align: center; }
+  .text-left { text-align: left; }
+  .text-right { text-align: right; }
+  
+  /* Display */
+  .d-none { display: none; }
+  .d-block { display: block; }
+  .d-flex { display: flex; }
+  
+  /* Flex utilities */
+  .align-center { align-items: center; }
+  .justify-center { justify-content: center; }
+  .justify-between { justify-content: space-between; }
+  
+  /* Visibility */
+  .visible { visibility: visible; }
+  .invisible { visibility: hidden; }
