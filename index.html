@@ -242,11 +242,12 @@
         }
         
         /* Refined Features Section */
-        .features {
+        .features, .about {
             padding: 8rem 2rem;
             background-color: #fff;
             color: #333;
             position: relative;
+            overflow: hidden;
         }
 
         .features-container {
@@ -401,6 +402,7 @@
             .site-header {
                 padding: 1rem;
                 justify-content: space-between;
+                background-color: rgba(26, 26, 26, 0.95);
             }
             
             .logo-container {
@@ -414,45 +416,131 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(26, 26, 26, 0.98);
+                background-color: #1a1a1a;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 2rem;
+                gap: 2.5rem;
                 z-index: 90;
                 padding: 20px;
-                transition: all 0.3s ease;
+                padding-top: 70px;
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
             
             .main-nav.active {
                 display: flex;
-                animation: fadeIn 0.3s forwards;
             }
             
             .nav-item {
-                font-size: 1.25rem;
-                padding: 10px 0;
-                width: 100%;
+                font-family: 'ChiroSans', sans-serif;
+                font-weight: 600;
+                font-size: 1.4rem;
+                padding: 12px 0;
+                width: 80%;
                 text-align: center;
+                color: white;
+                position: relative;
+                transition: color 0.3s ease, transform 0.3s ease;
+                letter-spacing: 0.5px;
+            }
+            
+            .nav-item:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #fff;
+                transition: width 0.3s ease;
+            }
+            
+            .nav-item:hover, .nav-item.active {
+                color: #fff;
+                transform: translateY(-2px);
+            }
+            
+            .nav-item:hover:after, .nav-item.active:after {
+                width: 30%;
             }
             
             .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                margin-right: 5px;
+                z-index: 100;
+                background-color: rgba(43, 97, 77, 0.5);
+                transition: background-color 0.3s ease;
+            }
+            
+            .mobile-menu-btn i {
+                color: white;
+                font-size: 1.2rem;
+                transition: transform 0.4s ease;
+            }
+            
+            .mobile-menu-btn:hover {
+                background-color: rgba(43, 97, 77, 0.7);
+            }
+            
+            .mobile-menu-btn.active {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                background-color: rgba(43, 97, 77, 0.7);
+            }
+            
+            .mobile-menu-btn.active i.fa-bars {
+                display: none;
+            }
+            
+            .mobile-menu-btn i.fa-times {
+                display: none;
+            }
+            
+            .mobile-menu-btn.active i.fa-times {
                 display: block;
-                margin-right: 10px;
             }
             
             .social-icons {
                 position: fixed;
-                bottom: 40px;
+                bottom: 10%;
                 left: 0;
                 right: 0;
                 justify-content: center;
                 z-index: 91;
                 display: none;
+                gap: 1.5rem;
             }
             
-            .main-nav.active + .social-icons {
+            .social-icons.active {
                 display: flex;
+            }
+            
+            .social-icon {
+                color: var(--white);
+                font-size: 1.2rem;
+                padding: 0.8rem;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+            
+            .social-icon:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-3px);
             }
             
             .hero {
@@ -792,183 +880,6 @@
             }
         }
 
-        /* Testimonials section styles - Apple inspired */
-        .testimonials {
-            padding: 8rem 2rem;
-            background-color: #fff;
-            color: #333;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(43, 97, 77, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonials-header {
-            text-align: center;
-            margin-bottom: 6rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        
-        .testimonials-header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .testimonials-title {
-            font-family: 'ChiroSans', sans-serif;
-            font-weight: 600;
-            font-size: 3.2rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .testimonials-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #2B614D;
-            border-radius: 2px;
-        }
-
-        .testimonials-subtitle {
-            font-family: 'ChiroText', serif;
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 2rem auto 0;
-            line-height: 1.7;
-        }
-
-        .testimonials-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        .testimonial-item {
-            background-color: #fff;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-            display: flex;
-            flex-direction: column;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-        
-        .testimonial-item.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .testimonial-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial-text {
-            font-family: 'ChiroText', serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: '"';
-            font-size: 5rem;
-            font-family: Georgia, serif;
-            position: absolute;
-            top: -2.5rem;
-            left: -0.8rem;
-            color: rgba(43, 97, 77, 0.08);
-            z-index: 0;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1rem;
-            background-color: #f6f6f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(43, 97, 77, 0.1);
-        }
-
-        .author-avatar svg {
-            width: 60%;
-            height: 60%;
-            fill: #2B614D;
-        }
-
-        .author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-family: 'ChiroSans', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
-        .author-detail {
-            font-family: 'ChiroText', serif;
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        .testimonial-stars {
-            margin-top: 0.5rem;
-            display: flex;
-            margin-bottom: 1.8rem;
-        }
-
-        .testimonial-stars i {
-            color: #f0ab00;
-            margin-right: 0.3rem;
-            font-size: 1rem;
-        }
-
         /* Apple-inspired Footer */
         .footer {
             background-color: #111;
@@ -1105,6 +1016,13 @@
             padding: 0.5rem; /* Increased touch target */
             touch-action: manipulation; /* Better touch handling */
         }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
@@ -1120,6 +1038,7 @@
         </nav>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
         </div>
         <div class="social-icons">
             <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -1179,82 +1098,6 @@
             <h2 class="section-title">Dedicated to your health and wellness.</h2>
             <p class="about-text">With years of experience and a commitment to excellence, we provide comprehensive chiropractic care that focuses on your individual needs.</p>
             <a href="services.html" class="btn-learn-more">LEARN MORE</a>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="testimonials-container">
-            <div class="testimonials-header">
-                <h2 class="testimonials-title">What Our Patients Say</h2>
-                <p class="testimonials-subtitle">We're proud to have helped hundreds of patients on their journey to wellness. Here's what some of them have to say about their experience.</p>
-            </div>
-            <div class="testimonials-list">
-                <div class="testimonial-item">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">Dr. Killian completely changed my life. After years of chronic back pain, I can finally enjoy activities with my family without discomfort. The personalized treatment plan made all the difference.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Sarah K.</div>
-                            <div class="author-detail">Patient since 2020</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-item">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">I was skeptical about chiropractic care until my first visit to Cornerstone. The team takes the time to understand your concerns and creates a care plan that works. My migraines have decreased significantly!</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Michael T.</div>
-                            <div class="author-detail">Patient since 2019</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-item">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">The team at Cornerstone is exceptional. From the warm greeting to the thorough explanations, every visit makes me feel cared for. I've recommended them to all my friends and family.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Jennifer M.</div>
-                            <div class="author-detail">Patient since 2021</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1353,21 +1196,24 @@
     </div>
 
     <script>
-        // Mobile menu toggle with animation
+        // Mobile menu functionality
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             const nav = document.querySelector('.main-nav');
-            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const socialIcons = document.querySelector('.social-icons');
             
             if (nav.classList.contains('active')) {
+                // Close menu
                 nav.classList.remove('active');
-                menuBtn.classList.remove('fa-times');
-                menuBtn.classList.add('fa-bars');
+                menuBtn.classList.remove('active');
                 document.body.style.overflow = '';
+                socialIcons.classList.remove('active');
             } else {
+                // Open menu
                 nav.classList.add('active');
-                menuBtn.classList.remove('fa-bars');
-                menuBtn.classList.add('fa-times');
+                menuBtn.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                socialIcons.classList.add('active');
             }
         });
 
@@ -1375,12 +1221,13 @@
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', () => {
                 const nav = document.querySelector('.main-nav');
-                const menuBtn = document.querySelector('.mobile-menu-btn i');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                const socialIcons = document.querySelector('.social-icons');
                 
                 if (window.innerWidth <= 768 && nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    menuBtn.classList.remove('fa-times');
-                    menuBtn.classList.add('fa-bars');
+                    menuBtn.classList.remove('active');
+                    socialIcons.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });
@@ -1446,29 +1293,6 @@
         
         window.addEventListener('scroll', revealAbout);
         window.addEventListener('load', revealAbout);
-
-        // Testimonials animations
-        const testimonialsHeader = document.querySelector('.testimonials-header');
-        const testimonialItems = document.querySelectorAll('.testimonial-item');
-        
-        const revealTestimonials = function() {
-            const headerTop = testimonialsHeader.getBoundingClientRect().top;
-            const triggerPoint = window.innerHeight * 0.8;
-            
-            if (headerTop < triggerPoint) {
-                testimonialsHeader.classList.add('visible');
-                
-                // Add staggered delay to testimonial items
-                testimonialItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('visible');
-                    }, 200 * (index + 1));
-                });
-            }
-        };
-        
-        window.addEventListener('scroll', revealTestimonials);
-        window.addEventListener('load', revealTestimonials);
 
         // Enhanced Parallax effect
         window.addEventListener('scroll', function() {

@@ -686,11 +686,12 @@
             }
         }
 
-        /* Updated Mobile Styles */
+        /* Mobile Menu Redesign */
         @media (max-width: 768px) {
             .site-header {
                 padding: 1rem;
                 justify-content: space-between;
+                background-color: rgba(26, 26, 26, 0.95);
             }
             
             .logo-container {
@@ -704,45 +705,131 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(26, 26, 26, 0.98);
+                background-color: #1a1a1a;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 2rem;
+                gap: 2.5rem;
                 z-index: 90;
                 padding: 20px;
-                transition: all 0.3s ease;
+                padding-top: 70px;
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
             
             .main-nav.active {
                 display: flex;
-                animation: fadeIn 0.3s forwards;
             }
             
             .nav-item {
-                font-size: 1.25rem;
-                padding: 10px 0;
-                width: 100%;
+                font-family: 'ChiroSans', sans-serif;
+                font-weight: 600;
+                font-size: 1.4rem;
+                padding: 12px 0;
+                width: 80%;
                 text-align: center;
+                color: white;
+                position: relative;
+                transition: color 0.3s ease, transform 0.3s ease;
+                letter-spacing: 0.5px;
+            }
+            
+            .nav-item:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #fff;
+                transition: width 0.3s ease;
+            }
+            
+            .nav-item:hover, .nav-item.active {
+                color: #fff;
+                transform: translateY(-2px);
+            }
+            
+            .nav-item:hover:after, .nav-item.active:after {
+                width: 30%;
             }
             
             .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                margin-right: 5px;
+                z-index: 100;
+                background-color: rgba(43, 97, 77, 0.5);
+                transition: background-color 0.3s ease;
+            }
+            
+            .mobile-menu-btn i {
+                color: white;
+                font-size: 1.2rem;
+                transition: transform 0.4s ease;
+            }
+            
+            .mobile-menu-btn:hover {
+                background-color: rgba(43, 97, 77, 0.7);
+            }
+            
+            .mobile-menu-btn.active {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                background-color: rgba(43, 97, 77, 0.7);
+            }
+            
+            .mobile-menu-btn.active i.fa-bars {
+                display: none;
+            }
+            
+            .mobile-menu-btn i.fa-times {
+                display: none;
+            }
+            
+            .mobile-menu-btn.active i.fa-times {
                 display: block;
-                margin-right: 10px;
             }
             
             .social-icons {
                 position: fixed;
-                bottom: 40px;
+                bottom: 10%;
                 left: 0;
                 right: 0;
                 justify-content: center;
                 z-index: 91;
                 display: none;
+                gap: 1.5rem;
             }
             
-            .main-nav.active + .social-icons {
+            .social-icons.active {
                 display: flex;
+            }
+            
+            .social-icon {
+                color: var(--white);
+                font-size: 1.2rem;
+                padding: 0.8rem;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+            
+            .social-icon:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-3px);
             }
             
             .about-hero {
@@ -973,6 +1060,7 @@
         </nav>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
         </div>
         <div class="social-icons">
             <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -1169,19 +1257,38 @@
         // Mobile menu functionality
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             const nav = document.querySelector('.main-nav');
-            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const socialIcons = document.querySelector('.social-icons');
             
             if (nav.classList.contains('active')) {
+                // Close menu
                 nav.classList.remove('active');
-                menuBtn.classList.remove('fa-times');
-                menuBtn.classList.add('fa-bars');
+                menuBtn.classList.remove('active');
                 document.body.style.overflow = '';
+                socialIcons.classList.remove('active');
             } else {
+                // Open menu
                 nav.classList.add('active');
-                menuBtn.classList.remove('fa-bars');
-                menuBtn.classList.add('fa-times');
+                menuBtn.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                socialIcons.classList.add('active');
             }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('.main-nav');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                const socialIcons = document.querySelector('.social-icons');
+                
+                if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    menuBtn.classList.remove('active');
+                    socialIcons.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
         });
 
         // Scroll animations
