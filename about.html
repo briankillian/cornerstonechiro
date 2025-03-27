@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cornerstone Chiropractic</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="originsbranding/originsbrand.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Additional meta tags for SEO -->
+    <meta name="description" content="Learn about Cornerstone Chiropractic's mission, values, and commitment to the Lansing community.">
+    <meta name="keywords" content="chiropractic care, Lansing chiropractor, wellness center, community health">
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="About Cornerstone Chiropractic - Our Story & Mission">
+    <meta property="og:description" content="Discover our commitment to bringing expert, integrative care to the Lansing community.">
+    <meta property="og:url" content="https://cornerstonechiro.com/about">
+    <meta property="og:type" content="website">
+    <style>
+        /* Font Face Declarations - Consistent with index.html */
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+        }
+        
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroSans';
+            src: url('originsbranding/fonts/ChiroSans/ChiroSans-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroText';
+            src: url('originsbranding/fonts/ChiroText/ChiroText-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'ChiroText';
+            src: url('originsbranding/fonts/ChiroText/ChiroText-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Core improvements for Apple-like design */
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'ChiroText', serif;
+            color: var(--white);
+            background-color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Refined header */
+        .site-header {
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            padding: 0.6rem 2rem;
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+        }
+
+        .logo-container img {
+            height: 35px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+            margin-right: 2rem;
+        }
+
+        .nav-item {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
+        
+        .nav-item:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover:after {
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            color: var(--white);
+            font-size: 1rem;
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        /* Hero Section Refinements */
+        .about-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            padding: 0;
+            margin-top: 0;
+            perspective: 1500px;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 110%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+            z-index: 0;
+            transform: translateZ(0) scale(1.05);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            perspective: 1000;
+            -webkit-perspective: 1000;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-bottom-left-radius: 40% 5%;
+            border-bottom-right-radius: 40% 5%;
+            filter: brightness(0.9) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, 
+                        rgba(0, 0, 0, 0.2) 0%, 
+                        rgba(0, 0, 0, 0.5) 60%, 
+                        rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
+        }
+
+        .about-hero-content {
+            max-width: 800px;
+            padding: 0 3rem;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+            width: 90%;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 600;
+            color: var(--white);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-hero p {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            color: var(--white);
+            max-width: 600px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+        }
+
+        /* Story Section Refinements */
+        .story-section {
+            padding: 8rem 2rem;
+            background-color: #fff;
+            color: #333;
+            position: relative;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .story-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            aspect-ratio: 4/3;
+        }
+
+        .story-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-label {
+            color: #2B614D;
+            text-transform: uppercase;
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 600;
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: #333;
+            position: relative;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Philosophy Section Refinements */
+        .philosophy-section {
+            padding: 8rem 2rem;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            background-color: #fff;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .value-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            color: #2B614D;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-title {
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .value-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Community Section Refinements */
+        .community-section {
+            padding: 8rem 2rem;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .community-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(43, 97, 77, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 0;
+        }
+
+        .community-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .community-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .community-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .community-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Section Refinements */
+        .cta-section {
+            padding: 8rem 2rem;
+            background-color: #2B614D;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 600;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #2B614D;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Updated Mobile Styles */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .story-content {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .story-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .story-text, .community-text {
+                font-size: 1.1rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-cta {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .about-hero-content {
+                padding: 0 1.5rem;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-hero p {
+                font-size: 1.2rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .story-section, .philosophy-section, .community-section, .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .btn-cta {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .value-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            html, body {
+                -webkit-overflow-scrolling: touch;
+                scroll-padding-top: 70px;
+            }
+
+            .parallax-bg {
+                background-attachment: scroll;
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .story-text, .community-text {
+                font-size: 1rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-hero-content {
+                padding: 0 1rem;
+            }
+            
+            .section-label {
+                font-size: 0.85rem;
+            }
+            
+            .cta-buttons {
+                width: 100%;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Updated Mobile Styles */
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 1rem;
+                justify-content: space-between;
+            }
+            
+            .logo-container {
+                padding-left: 0;
+            }
+            
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(26, 26, 26, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 90;
+                padding: 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .main-nav.active {
+                display: flex;
+                animation: fadeIn 0.3s forwards;
+            }
+            
+            .nav-item {
+                font-size: 1.25rem;
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                margin-right: 10px;
+            }
+            
+            .social-icons {
+                position: fixed;
+                bottom: 40px;
+                left: 0;
+                right: 0;
+                justify-content: center;
+                z-index: 91;
+                display: none;
+            }
+            
+            .main-nav.active + .social-icons {
+                display: flex;
+            }
+            
+            .about-hero {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+
+        /* Back to top refinements */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(43, 97, 77, 0.95);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 999;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #111;
+            color: #fff;
+            padding: 6rem 2rem 3rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, 
+                rgba(255, 255, 255, 0), 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0)
+            );
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3.5rem;
+        }
+
+        .footer-logo img {
+            height: 32px;
+            opacity: 0.9;
+        }
+
+        .footer-about {
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #aaa;
+            max-width: 290px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            margin-right: 0.8rem;
+        }
+
+        .footer-heading {
+            font-family: 'ChiroSans', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            line-height: 2.2;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-contact-icon {
+            color: #2B614D;
+            margin-right: 1rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-contact-text {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 5rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive footer styles */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+
+        /* Touch-friendly enhancements */
+        .nav-item, .social-icon, .back-to-top {
+            padding: 0.5rem; /* Increased touch target */
+            touch-action: manipulation; /* Better touch handling */
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="originsbranding/logos/cc_text_white.png" alt="Cornerstone Chiropractic">
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">HOME</a>
+            <a href="services.html" class="nav-item">SERVICES</a>
+            <a href="about.html" class="nav-item active">OUR STORY</a>
+            <a href="#" class="nav-item">OUR TEAM</a>
+        </nav>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="far fa-user"></i></a>
+            <a href="#" class="social-icon"><i class="far fa-calendar"></i></a>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="parallax-bg" style="background-image: url('assets/images/about_hero.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="about-hero-content">
+            <h1>Rooted in Care. Driven by Purpose.</h1>
+            <p>Cornerstone Chiropractic was built to bring expert, integrative care to the Lansing community — blending clinical excellence with genuine compassion.</p>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-content">
+                <div class="section-label">From Vision to Reality</div>
+                <h2 class="section-title">Our Story</h2>
+                <p class="story-text">Cornerstone Chiropractic was founded on a simple but powerful idea: healthcare should be personal, proactive, and rooted in real relationships.</p>
+                <p class="story-text">After years in the chiropractic and wellness field, we saw a growing need for a place that combined expert care with a welcoming, patient-first environment. No rushed appointments. No one-size-fits-all treatments. Just focused, intentional care that helps people move better, feel stronger, and live fully.</p>
+                <p class="story-text">Today, Cornerstone Chiropractic serves as a trusted partner in health for individuals and families across Lansing — whether they're recovering from injury, managing chronic pain, or simply seeking a better baseline of health.</p>
+            </div>
+            <div class="story-image">
+                <img src="assets/images/about_story.jpg" alt="Cornerstone Chiropractic Story">
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="philosophy-container">
+            <div class="section-label">Our Philosophy</div>
+            <h2 class="section-title">Care That Moves You Forward</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 class="value-title">Patient-Centered</h3>
+                    <p class="value-description">Your goals guide your care plan. We listen, adapt, and work together to achieve your health objectives.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="value-title">Evidence-Informed</h3>
+                    <p class="value-description">We combine proven techniques with modern tools to deliver the most effective care possible.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-title">Collaborative</h3>
+                    <p class="value-description">We work together as a team to reach better outcomes and achieve lasting results.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3 class="value-title">Long-Term Focused</h3>
+                    <p class="value-description">We don't chase symptoms — we solve problems at their source for lasting wellness.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">Warm & Professional</h3>
+                    <p class="value-description">You'll always feel respected, heard, and cared for in our welcoming environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-section">
+        <div class="community-container">
+            <div class="section-label">Our Community</div>
+            <h2 class="section-title">Deeply Rooted in Lansing</h2>
+            <div class="community-content">
+                <p class="community-text">We proudly serve the Lansing area with deep community roots. Whether it's working with student-athletes, serving seniors, or supporting working professionals and families, Cornerstone Chiropractic is committed to improving quality of life for the people who make this community great.</p>
+                <p class="community-text">Through our partnerships with local schools, gyms, and businesses, we're actively involved in promoting wellness throughout our community. We believe in giving back and making a positive impact beyond our clinic walls.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to take the next step in your health journey?</h2>
+            <p class="cta-text">Let's work together to create a care plan that fits you.</p>
+            <div class="cta-buttons">
+                <a href="https://schedule.drkillian.com" class="btn-cta btn-primary">📅 Book an Appointment</a>
+                <a href="tel:+1234567890" class="btn-cta btn-secondary">📞 Call Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="originsbranding/logos/cc_text_white.png" alt="Cornerstone Chiropractic">
+                </div>
+                <p class="footer-about">Expert chiropractic care focused on your overall wellness. Our mission is to help you live your best life, pain-free.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#services">Chiropractic Adjustments</a></li>
+                    <li><a href="services.html#services">Therapeutic Massage</a></li>
+                    <li><a href="services.html#services">Physical Therapy Modalities</a></li>
+                    <li><a href="services.html#services">Lifestyle Advice</a></li>
+                    <li><a href="services.html#services">Pain Management</a></li>
+                    <li><a href="services.html#services">Sport Injuries</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Us</h3>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="footer-contact-text">
+                        4004 West Saint Joe Highway<br>
+                        Lansing, MI 48917
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="footer-contact-text">
+                        (517) 327-7463
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="footer-contact-text">
+                        info@cornerstonechiro.com
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <div class="footer-contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="footer-contact-text">
+                        Mon-Thu: 7am - 6pm<br>
+                        Fri-Sun: Closed
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                &copy; 2023 Cornerstone Chiropractic. All rights reserved.
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('.main-nav');
+            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuBtn.classList.remove('fa-times');
+                menuBtn.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('active');
+                menuBtn.classList.remove('fa-bars');
+                menuBtn.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.story-content, .story-image, .value-card, .community-container').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Enhanced Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const scrollY = window.pageYOffset;
+            
+            if (parallaxBg && window.innerWidth > 768) { // Only apply full parallax on non-mobile
+                // More intense parallax effect with scale
+                parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.5}px, 0) scale(${1 + scrollY * 0.0005})`;
+                
+                // More dynamic opacity change for overlay
+                const heroOverlay = document.querySelector('.hero-overlay');
+                if (heroOverlay) {
+                    // Enhanced opacity range for more intensity
+                    heroOverlay.style.opacity = Math.min(0.95, 0.7 + (scrollY * 0.001));
+                }
+                
+                // Subtle rotation on scroll for Apple-like depth
+                document.querySelector('.about-hero').style.perspective = `${1000 + scrollY}px`;
+            }
+        });
+
+        // Back to top functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

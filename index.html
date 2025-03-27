@@ -111,21 +111,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* Parallax Effect */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            will-change: transform;
-            z-index: 0;
-            transform: translateZ(0);
-        }
-        
-        /* Hero Enhancements */
+        /* Improved Hero Parallax Effect */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -135,17 +121,48 @@
             background-color: #1a1a1a;
             padding-left: 3rem;
             margin-top: 0;
-            perspective: 1000px;
+            perspective: 1500px;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
         }
         
+        .parallax-bg {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 110%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+            z-index: 0;
+            transform: translateZ(0) scale(1.05);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            perspective: 1000;
+            -webkit-perspective: 1000;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-bottom-left-radius: 40% 5%;
+            border-bottom-right-radius: 40% 5%;
+            filter: brightness(0.9) saturate(1.2);
+        }
+        
+        /* Enhanced Hero Overlay */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.8) 100%);
+            background: radial-gradient(ellipse at center, 
+                        rgba(0, 0, 0, 0.2) 0%, 
+                        rgba(0, 0, 0, 0.5) 60%, 
+                        rgba(0, 0, 0, 0.8) 100%);
             z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
         }
         
         .hero-content {
@@ -155,10 +172,11 @@
             animation: fadeInUp 1.2s ease-out;
             position: relative;
             z-index: 2;
+            width: 90%;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 5vw, 4.5rem);
             margin-bottom: 1.5rem;
             line-height: 1.1;
             font-family: 'ChiroSans', sans-serif;
@@ -168,7 +186,7 @@
         }
 
         .hero-content p {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 3vw, 1.4rem);
             margin-bottom: 2.5rem;
             line-height: 1.6;
             color: var(--white);
@@ -178,7 +196,9 @@
         }
 
         .btn-appointment {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: #2B614D;
             color: var(--white);
             padding: 0.9rem 2.5rem;
@@ -195,6 +215,8 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            min-height: 44px;
+            touch-action: manipulation;
         }
 
         .btn-appointment:before {
@@ -324,6 +346,8 @@
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
             position: relative;
+            padding: 0.5rem;
+            touch-action: manipulation;
         }
         
         .nav-item:after {
@@ -349,6 +373,8 @@
         .social-icon {
             color: var(--white);
             font-size: 1rem;
+            padding: 0.5rem;
+            touch-action: manipulation;
         }
 
         /* Mobile menu */
@@ -478,9 +504,56 @@
             .feature-description {
                 font-size: 1rem;
             }
+
+            .features, .about, .testimonials {
+                padding: 4rem 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .btn-appointment, .btn-learn-more {
+                width: 100%;
+                max-width: 280px;
+                min-height: 44px;
+            }
+            
+            /* Better mobile touch scrolling */
+            html, body {
+                -webkit-overflow-scrolling: touch;
+                scroll-padding-top: 70px;
+            }
+            
+            .testimonial-item {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            .parallax-bg {
+                background-attachment: scroll; /* Better performance on mobile */
+                transform: none !important; /* Disable parallax on mobile */
+            }
         }
 
         @media (max-width: 480px) {
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .section-label {
+                font-size: 0.85rem;
+            }
+            
+            .testimonial-stars i {
+                font-size: 0.9rem;
+            }
+            
+            .author-avatar {
+                width: 45px;
+                height: 45px;
+            }
+            
             .hero-content h1 {
                 font-size: 2rem;
                 margin-bottom: 1rem;
@@ -1023,6 +1096,14 @@
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.2);
+        }
+
+        /* Touch-friendly enhancements */
+        .nav-item, .social-icon, .back-to-top, 
+        .btn-learn-more, .footer-link, .footer-social a {
+            padding: 0.5rem; /* Increased touch target */
+            touch-action: manipulation; /* Better touch handling */
         }
     </style>
 </head>
@@ -1034,8 +1115,8 @@
         <nav class="main-nav">
             <a href="index.html" class="nav-item active">HOME</a>
             <a href="services.html" class="nav-item">SERVICES</a>
+            <a href="about.html" class="nav-item">OUR STORY</a>
             <a href="#" class="nav-item">OUR TEAM</a>
-            <a href="#" class="nav-item">OUR STORY</a>
         </nav>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
@@ -1196,10 +1277,9 @@
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Resources</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -1208,9 +1288,9 @@
                 <h3 class="footer-heading">Services</h3>
                 <ul class="footer-links">
                     <li><a href="services.html#services">Chiropractic Adjustments</a></li>
-                    <li><a href="services.html#services">Corrective Exercises</a></li>
+                    <li><a href="services.html#services">Therapeutic Massage</a></li>
+                    <li><a href="services.html#services">Physical Therapy Modalities</a></li>
                     <li><a href="services.html#services">Lifestyle Advice</a></li>
-                    <li><a href="services.html#services">Spinal & Postural Screenings</a></li>
                     <li><a href="services.html#services">Pain Management</a></li>
                     <li><a href="services.html#services">Sport Injuries</a></li>
                 </ul>
@@ -1390,16 +1470,25 @@
         window.addEventListener('scroll', revealTestimonials);
         window.addEventListener('load', revealTestimonials);
 
-        // Parallax effect
+        // Enhanced Parallax effect
         window.addEventListener('scroll', function() {
             const parallaxBg = document.querySelector('.parallax-bg');
             const scrollY = window.pageYOffset;
             
-            // Enhanced parallax movement
-            parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.6}px, 0) scale(${1 + scrollY * 0.0005})`;
-            
-            // Subtle rotate effect on scroll
-            document.querySelector('.hero-overlay').style.opacity = 0.6 + (scrollY * 0.001);
+            if (parallaxBg && window.innerWidth > 768) { // Only apply full parallax on non-mobile
+                // More intense parallax effect with scale
+                parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.5}px, 0) scale(${1 + scrollY * 0.0005})`;
+                
+                // More dynamic opacity change for overlay
+                const heroOverlay = document.querySelector('.hero-overlay');
+                if (heroOverlay) {
+                    // Enhanced opacity range for more intensity
+                    heroOverlay.style.opacity = Math.min(0.95, 0.7 + (scrollY * 0.001));
+                }
+                
+                // Subtle rotation on scroll for Apple-like depth
+                document.querySelector('.hero').style.perspective = `${1000 + scrollY}px`;
+            }
         });
     </script>
 </body>

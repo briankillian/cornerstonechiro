@@ -121,30 +121,49 @@
             background-color: #1a1a1a;
             padding-left: 3rem;
             margin-top: 0;
-            perspective: 1000px;
+            perspective: 1500px;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
         }
         
+        /* Improved Parallax Effect */
         .parallax-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -10%;
+            left: -5%;
+            width: 110%;
+            height: 120%;
             background-size: cover;
             background-position: center;
             will-change: transform;
             z-index: 0;
-            transform: translateZ(0);
+            transform: translateZ(0) scale(1.05);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            perspective: 1000;
+            -webkit-perspective: 1000;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-bottom-left-radius: 40% 5%;
+            border-bottom-right-radius: 40% 5%;
+            filter: brightness(0.9) saturate(1.2);
         }
         
+        /* Enhanced Hero Overlay */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.8) 100%);
+            background: radial-gradient(ellipse at center, 
+                        rgba(0, 0, 0, 0.2) 0%, 
+                        rgba(0, 0, 0, 0.5) 60%, 
+                        rgba(0, 0, 0, 0.8) 100%);
             z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
         }
         
         .hero-content {
@@ -154,10 +173,11 @@
             animation: fadeInUp 1.2s ease-out;
             position: relative;
             z-index: 2;
+            width: 90%; /* Added for mobile optimization */
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 5vw, 4.5rem); /* Responsive font sizing */
             margin-bottom: 1.5rem;
             line-height: 1.1;
             font-family: 'ChiroSans', sans-serif;
@@ -167,7 +187,7 @@
         }
 
         .hero-content p {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 3vw, 1.4rem); /* Responsive font sizing */
             margin-bottom: 2.5rem;
             line-height: 1.6;
             color: var(--white);
@@ -183,7 +203,10 @@
         }
 
         .btn-primary {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px; /* Apple's minimum touch target height */
             background-color: #2B614D;
             color: var(--white);
             padding: 0.9rem 2.5rem;
@@ -200,6 +223,7 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            touch-action: manipulation; /* Better touch handling */
         }
 
         .btn-primary:before {
@@ -225,7 +249,10 @@
         }
 
         .btn-secondary {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px; /* Apple's minimum touch target height */
             background-color: transparent;
             color: var(--white);
             padding: 0.9rem 2.5rem;
@@ -242,6 +269,7 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            touch-action: manipulation; /* Better touch handling */
         }
 
         .btn-secondary:before {
@@ -314,6 +342,8 @@
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
             position: relative;
+            padding: 0.5rem; /* Increased touch target */
+            touch-action: manipulation; /* Better touch handling */
         }
         
         .nav-item:after {
@@ -343,6 +373,8 @@
         .social-icon {
             color: var(--white);
             font-size: 1rem;
+            padding: 0.5rem; /* Increased touch target */
+            touch-action: manipulation; /* Better touch handling */
         }
 
         /* Mobile menu */
@@ -352,6 +384,8 @@
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 100;
+            padding: 0.5rem; /* Increased touch target */
+            touch-action: manipulation; /* Better touch handling */
         }
 
         /* Additional responsive styles */
@@ -473,6 +507,12 @@
             
             .service-image {
                 height: 250px;
+            }
+
+            /* Optimize for mobile */
+            .parallax-bg {
+                background-attachment: scroll; /* Better performance on mobile */
+                transform: none !important; /* Disable parallax on mobile */
             }
         }
 
@@ -1605,8 +1645,8 @@
         <nav class="main-nav">
             <a href="index.html" class="nav-item">HOME</a>
             <a href="services.html" class="nav-item active">SERVICES</a>
+            <a href="about.html" class="nav-item">OUR STORY</a>
             <a href="#" class="nav-item">OUR TEAM</a>
-            <a href="#" class="nav-item">OUR STORY</a>
         </nav>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
@@ -1980,9 +2020,9 @@
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Resources</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -1990,11 +2030,12 @@
             <div class="footer-column">
                 <h3 class="footer-heading">Services</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Chiropractic Adjustments</a></li>
-                    <li><a href="#">Therapeutic Massage</a></li>
-                    <li><a href="#">Physical Therapy Modalities</a></li>
-                    <li><a href="#">Sports Injury Rehabilitation</a></li>
-                    <li><a href="#">Prenatal & Pediatric Care</a></li>
+                    <li><a href="services.html#services">Chiropractic Adjustments</a></li>
+                    <li><a href="services.html#services">Therapeutic Massage</a></li>
+                    <li><a href="services.html#services">Physical Therapy Modalities</a></li>
+                    <li><a href="services.html#services">Lifestyle Advice</a></li>
+                    <li><a href="services.html#services">Pain Management</a></li>
+                    <li><a href="services.html#services">Sport Injuries</a></li>
                 </ul>
             </div>
 
@@ -2102,12 +2143,16 @@
             const parallaxBg = document.querySelector('.parallax-bg');
             const scrollY = window.pageYOffset;
             
-            // Enhanced parallax movement
-            if (parallaxBg) {
-                parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.6}px, 0) scale(${1 + scrollY * 0.0005})`;
+            if (parallaxBg && window.innerWidth > 768) { // Only apply full parallax on non-mobile
+                // Use translate3d for hardware acceleration and smoother parallax 
+                parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.4}px, 0)`;
                 
-                // Subtle rotate effect on scroll
-                document.querySelector('.hero-overlay').style.opacity = 0.6 + (scrollY * 0.001);
+                // Subtle opacity change for overlay with a more limited range
+                const heroOverlay = document.querySelector('.hero-overlay');
+                if (heroOverlay) {
+                    // Limit the opacity range for more consistency
+                    heroOverlay.style.opacity = Math.min(0.9, 0.7 + (scrollY * 0.0005));
+                }
             }
         });
         
@@ -2145,6 +2190,27 @@
         
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        // Enhanced Parallax effect
+        window.addEventListener('scroll', function() {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const scrollY = window.pageYOffset;
+            
+            if (parallaxBg && window.innerWidth > 768) { // Only apply full parallax on non-mobile
+                // More intense parallax effect with scale
+                parallaxBg.style.transform = `translate3d(0, ${scrollY * 0.5}px, 0) scale(${1 + scrollY * 0.0005})`;
+                
+                // More dynamic opacity change for overlay
+                const heroOverlay = document.querySelector('.hero-overlay');
+                if (heroOverlay) {
+                    // Enhanced opacity range for more intensity
+                    heroOverlay.style.opacity = Math.min(0.95, 0.7 + (scrollY * 0.001));
+                }
+                
+                // Subtle rotation on scroll for Apple-like depth
+                document.querySelector('.hero').style.perspective = `${1000 + scrollY}px`;
+            }
+        });
     </script>
 </body>
 </html>
